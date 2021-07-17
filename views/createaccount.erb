@@ -1,0 +1,9 @@
+<!-- views/createaccount.erb -->
+<form method="post" action="/users/createaccount">
+  <div>
+    <label for="username"> Username:
+      <input name="username" id="username" value="<%= params[:username] %>"/>
+    </label>
+  </div>
+  <button type="submit">Create Account</button>
+</form>

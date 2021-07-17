@@ -1,0 +1,35 @@
+<!-- views/index.erb -->
+
+<% if session[:username] %>
+  <form method="post" action="/users/signout">
+    <p class="user-status">
+      Signed in as <%= session[:username] %>.
+      <button type="submit">Sign Out</button>
+    </p>
+  </form>
+  <form method="post" action="/users/deleteaccount">
+  <p class="user-status">
+    <button type="submit">Delete Account?</button>
+  </p>
+  </form>
+
+  <p>Favorite Websites</p>
+  <ul>
+    <% @user_urls.each do |key, url| %>
+      <li>
+      <a href="<%= url %>"><%= url %></a>
+      
+      <form class="inline" method="post" action="<%= key %>/delete_url">
+      <button type="submit">delete</button>
+      </form>
+      </li>
+    <% end %>
+  </ul>
+<p><a href="/new">Add New Website</a></p>
+
+<% else %>
+<p class="user-status"><a href="/users/signin">Sign In</a></p>
+<p class="user-status"><a href="/users/createaccount">Create Account</a></p>
+<% end %>
+
+
